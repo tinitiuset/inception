@@ -38,6 +38,7 @@ services:
     restart: unless-stopped
     depends_on:
       - mariadb
+      - redis
 
   mariadb:
     container_name: mariadb
@@ -45,4 +46,9 @@ services:
     volumes:
       - db:/var/lib/mysql
     env_file: .env
+    restart: unless-stopped
+
+  redis:
+    container_name: redis
+    build: requirements/redis
     restart: unless-stopped

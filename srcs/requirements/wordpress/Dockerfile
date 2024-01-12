@@ -12,6 +12,7 @@ RUN apk update && apk upgrade && apk add --no-cache  \
     php-xml \
     php-zip \
     php-phar \
+    php-tokenizer \
     mariadb-client \
     && rm -f /var/cache/apk/*
 
