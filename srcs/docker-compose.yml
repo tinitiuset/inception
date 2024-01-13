@@ -37,8 +37,10 @@ services:
     env_file: .env
     restart: unless-stopped
     depends_on:
-      - mariadb
-      - redis
+      mariadb:
+        condition: service_healthy
+      redis:
+        condition: service_started
 
   mariadb:
     container_name: mariadb
@@ -47,6 +49,10 @@ services:
       - db:/var/lib/mysql
     env_file: .env
     restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-p$MYSQL_ROOT_PASSWORD"]
+      timeout: 5s
+      retries: 3
 
   redis:
     container_name: redis
