@@ -79,3 +79,10 @@ services:
     restart: unless-stopped
     depends_on:
       - mariadb
+
+  httpd:
+    build: requirements/httpd
+    container_name: httpd
+    ports:
+      - "8888:80"
+    restart: unless-stopped
