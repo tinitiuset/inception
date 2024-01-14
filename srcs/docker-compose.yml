@@ -70,3 +70,12 @@ services:
     environment:
       FTP_PASSWORD: $FTP_PASSWORD
     restart: unless-stopped
+
+  adminer:
+    build: requirements/adminer
+    container_name: adminer
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+    depends_on:
+      - mariadb
