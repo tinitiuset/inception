@@ -58,3 +58,15 @@ services:
     container_name: redis
     build: requirements/redis
     restart: unless-stopped
+
+  ftp:
+    build: requirements/ftp
+    container_name: ftp
+    ports:
+      - "21:21"
+      - "21100-21110:21100-21110"
+    volumes:
+      - wp:/ftp-data
+    environment:
+      FTP_PASSWORD: $FTP_PASSWORD
+    restart: unless-stopped
