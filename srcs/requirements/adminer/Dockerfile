@@ -9,6 +9,6 @@ RUN apk update && apk upgrade && apk add --no-cache  \
 
 RUN mkdir -p /var/www/html
 
-RUN wget "https://www.adminer.org/latest.php" -O /var/www/html/adminer.php
+RUN wget "https://www.adminer.org/latest.php" -O /var/www/html/index.php
 
 ENTRYPOINT ["php", "-S", "0.0.0.0:80", "-t", "/var/www/html"]
