@@ -1,4 +1,4 @@
-FROM alpine:3.18
+FROM alpine:3.18 as MARIADB
 
 RUN apk add --no-cache mariadb mariadb-client mariadb-server-utils && \
     rm -f /var/cache/apk/*
